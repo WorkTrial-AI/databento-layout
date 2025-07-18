@@ -1,5 +1,9 @@
 "use client";
 
+import { ExternalLink, Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -8,90 +12,88 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ExternalLink, Mail } from "lucide-react";
+
+interface Candidate {
+  id: string;
+  name: string;
+  email: string;
+  jobRelevanceRank: number;
+  linkedinUrl: string;
+}
 
 interface DataTableProps {
   className?: string;
 }
 
-// Exactly 5 candidates - no more, no less
-const candidateData = [
+const candidateData: Candidate[] = [
   {
-    id: 1,
-    name: "Sarah Johnson",
-    email: "sarah.j@email.com",
-    jobRelevanceRank: 92,
-    linkedinUrl: "https://linkedin.com/in/sarahjohnson",
-    githubUrl: "https://github.com/sarahjohnson",
+    id: "1",
+    name: "Alice Johnson",
+    email: "alice.johnson@email.com",
+    jobRelevanceRank: 1,
+    linkedinUrl: "https://linkedin.com/in/alice-johnson"
   },
   {
-    id: 2,
-    name: "Michael Chen",
-    email: "michael.c@email.com",
-    jobRelevanceRank: 88,
-    linkedinUrl: "https://linkedin.com/in/michaelchen",
-    githubUrl: "https://github.com/michaelchen",
+    id: "2", 
+    name: "Bob Smith",
+    email: "bob.smith@email.com",
+    jobRelevanceRank: 2,
+    linkedinUrl: "https://linkedin.com/in/bob-smith"
   },
   {
-    id: 3,
-    name: "Emily Rodriguez",
-    email: "emily.r@email.com",
-    jobRelevanceRank: 85,
-    linkedinUrl: "https://linkedin.com/in/emilyrodriguez",
-    githubUrl: "https://github.com/emilyrodriguez",
+    id: "3",
+    name: "Carol Davis",
+    email: "carol.davis@email.com", 
+    jobRelevanceRank: 3,
+    linkedinUrl: "https://linkedin.com/in/carol-davis"
   },
   {
-    id: 4,
-    name: "David Kim",
-    email: "david.k@email.com",
-    jobRelevanceRank: 79,
-    linkedinUrl: "https://linkedin.com/in/davidkim",
-    githubUrl: "https://github.com/davidkim",
+    id: "4",
+    name: "David Wilson",
+    email: "david.wilson@email.com",
+    jobRelevanceRank: 4,
+    linkedinUrl: "https://linkedin.com/in/david-wilson"
   },
   {
-    id: 5,
-    name: "Lisa Thompson",
-    email: "lisa.t@email.com",
-    jobRelevanceRank: 76,
-    linkedinUrl: "https://linkedin.com/in/lisathompson",
-    githubUrl: "https://github.com/lisathompson",
-  },
+    id: "5",
+    name: "Emma Thompson",
+    email: "emma.thompson@email.com",
+    jobRelevanceRank: 5,
+    linkedinUrl: "https://linkedin.com/in/emma-thompson"
+  }
 ];
 
 export function DataTable({ className }: DataTableProps) {
-  const handleContact = (candidate: typeof candidateData[0]) => {
-    window.open(`mailto:${candidate.email}`, '_blank');
+  const handleContact = (candidate: Candidate) => {
+    const subject = encodeURIComponent(`Regarding your application - ${candidate.name}`);
+    const body = encodeURIComponent(`Hi ${candidate.name},\n\nI hope this email finds you well.\n\nBest regards`);
+    window.open(`mailto:${candidate.email}?subject=${subject}&body=${body}`);
   };
 
-  const getRankColor = (rank: number) => {
-    if (rank >= 90) return "text-emerald-300";
-    if (rank >= 80) return "text-amber-300";
-    if (rank >= 70) return "text-orange-300";
-    return "text-red-300";
+  const getRankColor = (rank: number): string => {
+    if (rank <= 2) return "text-emerald-700";
+    if (rank <= 4) return "text-amber-700";
+    return "text-red-700";
   };
 
-  const getRankBgColor = (rank: number) => {
-    if (rank >= 90) return "bg-emerald-900/30";
-    if (rank >= 80) return "bg-amber-900/30";
-    if (rank >= 70) return "bg-orange-900/30";
-    return "bg-red-900/30";
+  const getRankBgColor = (rank: number): string => {
+    if (rank <= 2) return "bg-emerald-100";
+    if (rank <= 4) return "bg-amber-100";
+    return "bg-red-100";
   };
 
   return (
-    <div className={cn("h-full", className)}>
-      <div className="rounded-md border border-stone-700 bg-stone-800 shadow-lg h-full flex flex-col overflow-hidden">
+    <div className={cn("w-full h-full", className)}>
+      <div className="rounded-md border border-stone-200 bg-stone-800 shadow-lg w-full h-full flex flex-col overflow-hidden">
         <div className="p-3 border-b border-stone-700 flex-shrink-0">
-          <h2 className="text-sm font-semibold text-stone-100">Candidates</h2>
+          <h2 className="text-sm font-semibold text-stone-100">Candidates Rank</h2>
         </div>
-        
-        {/* Fixed table sized for exactly 5 candidates */}
+
         <div className="flex-1 overflow-hidden">
-          <Table className="h-full">
+          <Table className="w-full h-full">
             <TableHeader>
               <TableRow className="border-b border-stone-700 bg-stone-800/50 h-10">
-                <TableHead className="font-semibold text-stone-100 py-2 px-3 text-xs">Name</TableHead>
+                <TableHead className="font-semibold text-stone-100 py-2 px-3 text-xs">Candidate</TableHead>
                 <TableHead className="font-semibold text-stone-100 py-2 px-3 text-xs">Rank</TableHead>
                 <TableHead className="font-semibold text-stone-100 py-2 px-3 text-xs">LinkedIn</TableHead>
                 <TableHead className="font-semibold text-stone-100 py-2 px-3 text-xs">Contact</TableHead>
