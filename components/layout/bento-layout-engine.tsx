@@ -102,7 +102,7 @@ export function BentoLayoutEngine({
     if (components.length === 0) return null;
 
     return (
-      <div key={key} className="flex gap-2 h-full">
+      <div key={key} className="flex gap-4 h-full">
         {components.map((config) => (
           <div
             key={config.id}
@@ -116,26 +116,26 @@ export function BentoLayoutEngine({
   };
 
   return (
-    <div className={cn("h-screen bg-stone-900 p-2 overflow-hidden", className)}>
-      <div className="w-full h-full flex flex-col gap-2 min-h-0">
+    <div className={cn("h-screen p-4", className)}>
+      <div className="w-full h-full flex flex-col gap-4 min-h-0">
         
         {/* TOP SECTION - Widgets above center, properly constrained */}
         {topComponents.length > 0 && (
-          <div className="flex-1 flex flex-col gap-2 min-h-0 overflow-hidden">
+          <div className="flex-1 flex flex-col gap-4 min-h-0">
             {topRows.map((row, index) => renderBentoRow(row, `top-row-${index}`))}
           </div>
         )}
 
         {/* CENTER SECTION - Fixed candidates table with smart widget placement */}
-        <div className="flex gap-2 flex-shrink-0" style={{ height: centerHeight }}>
+        <div className="flex gap-4 flex-shrink-0" style={{ height: centerHeight }}>
           {/* LEFT SIDE - Either leftComponent or assigned widgets stacked vertically */}
           <div className="flex-[2] min-w-0">
             {leftComponent ? (
               leftComponent
             ) : assignedLeftWidgets.length > 0 ? (
-              <div className="flex flex-col gap-2 h-full overflow-hidden">
+              <div className="flex flex-col gap-4 h-full">
                 {assignedLeftWidgets.map((config) => (
-                  <div key={config.id} className="flex-1 min-h-0 overflow-hidden">
+                  <div key={config.id} className="flex-1 min-h-0">
                     {config.component}
                   </div>
                 ))}
@@ -155,9 +155,9 @@ export function BentoLayoutEngine({
             {rightComponent ? (
               rightComponent
             ) : assignedRightWidgets.length > 0 ? (
-              <div className="flex flex-col gap-2 h-full overflow-hidden">
+              <div className="flex flex-col gap-4 h-full">
                 {assignedRightWidgets.map((config) => (
-                  <div key={config.id} className="flex-1 min-h-0 overflow-hidden">
+                  <div key={config.id} className="flex-1 min-h-0">
                     {config.component}
                   </div>
                 ))}
@@ -168,7 +168,7 @@ export function BentoLayoutEngine({
 
         {/* BOTTOM SECTION - Widgets below center, properly constrained within remaining space */}
         {bottomComponents.length > 0 && (
-          <div className="flex-1 flex flex-col gap-2 min-h-0 overflow-hidden">
+          <div className="flex-1 flex flex-col gap-4 min-h-0">
             {bottomRows.map((row, index) => renderBentoRow(row, `bottom-row-${index}`))}
           </div>
         )}
