@@ -96,8 +96,8 @@ const candidateData: Candidate[] = [
     }
   },
   {
-    id: "2",
-    name: "Bob Smith", 
+    id: "2", 
+    name: "Bob Smith",
     email: "bob.smith@email.com",
     jobRelevanceRank: 2,
     linkedinUrl: "https://linkedin.com/in/bob-smith",
@@ -579,24 +579,24 @@ export function DataTable({ className, selectedCandidateId, onCandidateSelect }:
           {/* Fixed Header */}
           <div className="flex-shrink-0 border-b bg-muted">
             <Table>
-              <TableHeader>
+            <TableHeader>
                 <TableRow className="h-10">
                   <TableHead className="font-semibold text-card-foreground py-2 px-3 text-xs">Candidate</TableHead>
                   <TableHead className="font-semibold text-card-foreground py-2 px-3 text-xs">Rank</TableHead>
                   <TableHead className="font-semibold text-card-foreground py-2 px-3 text-xs">LinkedIn</TableHead>
                   <TableHead className="font-semibold text-card-foreground py-2 px-3 text-xs">Contact</TableHead>
-                </TableRow>
-              </TableHeader>
+              </TableRow>
+            </TableHeader>
             </Table>
           </div>
 
           {/* Scrollable Body */}
           <div className="flex-1 overflow-y-auto">
             <Table>
-              <TableBody>
-                {candidateData.map((candidate) => (
-                  <TableRow
-                    key={candidate.id}
+            <TableBody>
+              {candidateData.map((candidate) => (
+                <TableRow
+                  key={candidate.id}
                     className={cn(
                       "border-b transition-colors h-12 cursor-pointer",
                       selectedCandidateId === candidate.id 
@@ -604,70 +604,70 @@ export function DataTable({ className, selectedCandidateId, onCandidateSelect }:
                         : "hover:bg-muted/50" // Default hover
                     )}
                     onClick={() => handleCandidateClick(candidate)}
-                  >
-                    <TableCell className="py-2 px-3">
-                      <div className="flex flex-col">
+                >
+                  <TableCell className="py-2 px-3">
+                    <div className="flex flex-col">
                         <span className={cn(
                           "font-medium text-xs leading-tight",
                           selectedCandidateId === candidate.id 
                             ? "text-primary font-bold" // Bold when selected
                             : "text-card-foreground"
                         )}>
-                          {candidate.name}
-                        </span>
-                        <span className="text-xs text-muted-foreground leading-tight">
-                          {candidate.email}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="py-2 px-3">
-                      <span
-                        className={cn(
-                          "inline-flex items-center justify-center rounded-full px-2 py-1 text-xs font-semibold min-w-[35px]",
-                          getRankColor(candidate.jobRelevanceRank),
-                          getRankBgColor(candidate.jobRelevanceRank)
-                        )}
-                      >
-                        {candidate.jobRelevanceRank}
+                        {candidate.name}
                       </span>
-                    </TableCell>
-                    <TableCell className="py-2 px-3">
-                      <Button
-                        variant="ghost"
-                        size="sm"
+                        <span className="text-xs text-muted-foreground leading-tight">
+                        {candidate.email}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="py-2 px-3">
+                    <span
+                      className={cn(
+                        "inline-flex items-center justify-center rounded-full px-2 py-1 text-xs font-semibold min-w-[35px]",
+                        getRankColor(candidate.jobRelevanceRank),
+                        getRankBgColor(candidate.jobRelevanceRank)
+                      )}
+                    >
+                      {candidate.jobRelevanceRank}
+                    </span>
+                  </TableCell>
+                  <TableCell className="py-2 px-3">
+                    <Button
+                      variant="ghost"
+                      size="sm"
                         className="text-primary hover:text-primary/80 hover:bg-muted h-6 px-2 text-xs"
                         onClick={(e) => {
                           e.stopPropagation(); // Prevent row click when clicking LinkedIn
                           window.open(candidate.linkedinUrl, '_blank');
                         }}
-                      >
-                        <ExternalLink className="h-3 w-3 mr-1" />
-                        Link
-                      </Button>
-                    </TableCell>
-                    <TableCell className="py-2 px-3">
-                      <Button
-                        size="sm"
+                    >
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Link
+                    </Button>
+                  </TableCell>
+                  <TableCell className="py-2 px-3">
+                    <Button
+                      size="sm"
                         className="bg-secondary hover:bg-secondary/80 text-secondary-foreground h-6 px-2 text-xs"
                         onClick={(e) => {
                           e.stopPropagation(); // Prevent row click when clicking Mail
                           handleContact(candidate);
                         }}
-                      >
-                        <Mail className="h-3 w-3 mr-1" />
-                        Mail
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                    >
+                      <Mail className="h-3 w-3 mr-1" />
+                      Mail
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
           </div>
         </div>
       </div>
     </div>
   );
-}
+} 
 
 // Export the candidateData for use in other components
 export { candidateData }; 

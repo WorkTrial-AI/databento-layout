@@ -61,7 +61,7 @@ export function BentoLayoutEngine({
   
   // Calculate premium space next to center (most valuable real estate)
   const leftSlots = leftComponent ? 0 : 2;   // Max 2 widgets left of center
-  const rightSlots = rightComponent ? 0 : 2; // Max 2 widgets right of center
+  const rightSlots = rightComponent ? 0 : 1; // Max 2 widgets right of center
   
   // STEP 1: Fill the most valuable space first (directly next to center)
   if (leftSlots > 0 && allWidgets.length > 0) {

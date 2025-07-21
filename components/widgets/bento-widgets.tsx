@@ -15,7 +15,7 @@ interface BentoWidgetProps {
 
 /**
  * TEAM PERFORMANCE WIDGET
- * Shows percentage improvement in team performance
+ * Shows percentage improvement in team performance with supporting evidence
  * Default: +12% | Candidate-specific: candidate.metrics.teamPerformance
  */
 export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -26,8 +26,16 @@ export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Team Performance"
-      content={<div className="text-2xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="text-center space-y-2">
+          <div className="text-3xl font-bold text-primary">{displayValue}</div>
+          <div className="text-xs text-muted-foreground space-y-1">
+            <div>• Led 8 major projects</div>
+            <div>• Improved delivery speed</div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -36,7 +44,7 @@ export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * ACTIVE CANDIDATES WIDGET
- * Shows number of active candidates in pipeline
+ * Shows number of active candidates with pipeline breakdown
  * Default: 247 | Candidate-specific: candidate.metrics.activeCandidates
  */
 export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -47,8 +55,22 @@ export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) 
   return (
     <BentoCard 
       header="Active Candidates"
-      content={<div className="text-3xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="space-y-2">
+          <div className="text-3xl font-bold text-primary text-center">{displayValue}</div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>In Review</span>
+              <span className="text-primary">89</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Final Round</span>
+              <span className="text-primary">28</span>
+            </div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -57,7 +79,7 @@ export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) 
 
 /**
  * INTERVIEW RATE WIDGET
- * Shows percentage of candidates that proceed to interview
+ * Shows percentage of candidates proceeding to interview with breakdown
  * Default: 73% | Candidate-specific: candidate.metrics.interviewRate
  */
 export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -68,8 +90,16 @@ export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Interview Rate"
-      content={<div className="text-2xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="text-center space-y-2">
+          <div className="text-3xl font-bold text-primary">{displayValue}</div>
+          <div className="text-xs text-muted-foreground space-y-1">
+            <div>• 156 reviewed</div>
+            <div>• 114 interviewed</div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -78,7 +108,7 @@ export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * SUCCESS RATE WIDGET
- * Shows overall success rate with conversion rate context
+ * Shows overall success rate with conversion metrics
  * Default: 89% | Candidate-specific: candidate.metrics.successRate
  */
 export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -90,9 +120,21 @@ export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Success Rate"
       content={
-        <div className="text-center">
-          <div className="text-4xl font-bold text-primary mb-2">{displayValue}</div>
-          <div className="text-muted-foreground">Conversion Rate</div>
+        <div className="space-y-2">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-1">{displayValue}</div>
+            <div className="text-muted-foreground text-sm">Conversion Rate</div>
+          </div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Offer Acceptance</span>
+              <span className="text-primary">94%</span>
+            </div>
+            <div className="flex justify-between">
+              <span>First Day Show</span>
+              <span className="text-primary">91%</span>
+            </div>
+          </div>
         </div>
       }
       contentType="custom"
@@ -104,7 +146,7 @@ export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * AI INSIGHTS WIDGET
- * Shows AI system status and readiness
+ * Shows AI system performance with detailed metrics
  * Default: Ready | Candidate-specific: candidate.metrics.aiInsights
  */
 export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -116,11 +158,23 @@ export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="AI Insights"
       content={
-        <div className="text-center">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent mx-auto mb-2 flex items-center justify-center">
-            <span className="font-bold text-primary-foreground">AI</span>
+        <div className="space-y-2">
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent mx-auto mb-2 flex items-center justify-center">
+              <span className="font-bold text-primary-foreground">AI</span>
+            </div>
+            <div className="text-sm font-medium text-primary">{displayValue}</div>
           </div>
-          <div className="text-xs text-muted-foreground">{displayValue}</div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Match Accuracy</span>
+              <span className="text-primary">96%</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Skills Analysis</span>
+              <span className="text-primary">Active</span>
+            </div>
+          </div>
         </div>
       }
       contentType="custom"
@@ -132,7 +186,7 @@ export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * RECRUITMENT GOAL WIDGET
- * Shows number of hires achieved this month
+ * Shows hires achieved with progress breakdown
  * Default: 15 | Candidate-specific: candidate.metrics.recruitmentGoal
  */
 export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -144,9 +198,21 @@ export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Recruitment Goal"
       content={
-        <div className="text-center">
-          <div className="text-4xl font-bold text-primary mb-4">{displayValue}</div>
-          <div className="text-muted-foreground text-lg">Hires this month</div>
+        <div className="space-y-2">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-1">{displayValue}</div>
+            <div className="text-muted-foreground text-sm">Hires this month</div>
+          </div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Target</span>
+              <span className="text-primary">20</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Progress</span>
+              <span className="text-primary">75%</span>
+            </div>
+          </div>
         </div>
       }
       contentType="custom"
@@ -158,7 +224,7 @@ export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * PIPELINE HEALTH WIDGET
- * Shows overall health status of recruitment pipeline
+ * Shows pipeline status with key health indicators
  * Default: Excellent | Candidate-specific: candidate.metrics.pipelineHealth
  */
 export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -169,8 +235,16 @@ export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Pipeline Health"
-      content={<div className="text-lg font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="text-center space-y-2">
+          <div className="text-2xl font-bold text-primary">{displayValue}</div>
+          <div className="text-xs text-muted-foreground space-y-1">
+            <div>• Steady candidate flow</div>
+            <div>• Strong conversion rates</div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -179,7 +253,7 @@ export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * RESPONSE TIME WIDGET
- * Shows average response time to candidates
+ * Shows average response time with breakdown by stage
  * Default: 2.3h | Candidate-specific: candidate.metrics.responseTime
  */
 export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -190,8 +264,22 @@ export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Response Time"
-      content={<div className="text-lg font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="space-y-2">
+          <div className="text-2xl font-bold text-primary text-center">{displayValue}</div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Initial Review</span>
+              <span className="text-primary">1.2h</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Feedback Delivery</span>
+              <span className="text-primary">4.5h</span>
+            </div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -200,7 +288,7 @@ export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * QUALITY SCORE WIDGET
- * Shows overall quality rating
+ * Shows overall quality rating with assessment breakdown
  * Default: 9.1 | Candidate-specific: candidate.metrics.qualityScore
  */
 export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -211,8 +299,22 @@ export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Quality Score"
-      content={<div className="text-xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="space-y-2">
+          <div className="text-2xl font-bold text-primary text-center">{displayValue}</div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Skills Match</span>
+              <span className="text-primary">9.5</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Culture Fit</span>
+              <span className="text-primary">8.9</span>
+            </div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -221,7 +323,7 @@ export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * TEAM EFFICIENCY WIDGET
- * Shows team efficiency percentage
+ * Shows team efficiency with productivity metrics
  * Default: 94% | Candidate-specific: candidate.metrics.teamEfficiency
  */
 export function TeamEfficiencyWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -232,8 +334,16 @@ export function TeamEfficiencyWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Team Efficiency"
-      content={<div className="text-lg font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="text-center space-y-2">
+          <div className="text-2xl font-bold text-primary">{displayValue}</div>
+          <div className="text-xs text-muted-foreground space-y-1">
+            <div>• Streamlined processes</div>
+            <div>• Effective communication</div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -254,8 +364,18 @@ export function NewMetricWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="New Metric"
-      content={<div className="text-xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="text-center space-y-2">
+          <div className="text-xl font-bold text-primary">{displayValue}</div>
+          <div className="text-xs text-muted-foreground space-y-1">
+            <div>• Easy to extend</div>
+            <div>• Flexible framework</div>
+            <div>• Rich evidence support</div>
+            <div>• AI-friendly design</div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
@@ -264,7 +384,7 @@ export function NewMetricWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * SATISFACTION WIDGET
- * Shows satisfaction rating
+ * Shows satisfaction rating with feedback breakdown
  * Uses same pattern as other widgets for consistency
  */
 export function SatisfactionWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -276,8 +396,29 @@ export function SatisfactionWidget({ selectedCandidate }: BentoWidgetProps) {
   return (
     <BentoCard 
       header="Satisfaction"
-      content={<div className="text-xl font-bold text-primary">{displayValue}</div>}
-      contentType="text"
+      content={
+        <div className="space-y-3">
+          <div className="text-xl font-bold text-primary text-center">{displayValue}</div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="flex justify-between">
+              <span>Process Rating</span>
+              <span className="text-primary">9.9</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Communication</span>
+              <span className="text-primary">9.8</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Timeline</span>
+              <span className="text-primary">9.7</span>
+            </div>
+            <div className="text-center mt-2 text-muted-foreground">
+              Outstanding feedback
+            </div>
+          </div>
+        </div>
+      }
+      contentType="custom"
       score={score}
       personName={personName}
     />
