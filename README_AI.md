@@ -1,53 +1,54 @@
 # 🎯 Ultra-Robust Bento Design System
 
-## 🚫 NO SCROLLABLE WIDGETS — ALL CONTENT MUST BE VISIBLE
+## ✨ NEW DESIGN STANDARD: FINDINGS-FOCUSED BENTO CARDS
 
 **IMPORTANT:**
-- No widget should ever be scrollable. All content must be visible at a glance.
-- If your evidence/justification is too long, you must:
-  - Only show the 2–3 most important points for that metric.
-  - Omit or condense less critical details.
-  - If a widget is especially important and needs more space, reduce the total number of widgets so each can be larger.
-- **Never** use scrollbars inside a BentoCard. The user should never have to scroll to see evidence or scores.
-- Be highly selective: show only the most impactful, relevant, and actionable evidence for each metric.
+- The **focal point** of each BentoCard should be the most significant positive and negative findings for that metric or category.
 
-**If you have a lot of important content:**
-- Reduce the number of widgets so each can be larger and more readable.
-- Or, summarize/aggregate evidence to fit the available space.
+- Use clear, visually distinct positive (e.g., green dot) and negative (e.g., red dot) findings.
+- Be concise: 1–2 positive findings and 1 negative finding is ideal, should be the most important findings for that catagory.
+- If you have more findings, reduce the number of widgets so each can be larger and more readable.
 
 **Example:**
 ```tsx
-// GOOD: Only 2–3 key points, all visible
+// GOOD: Findings-focused, qualitative, actionable
 content={
-  <div className="text-center space-y-2">
-    <div className="text-3xl font-bold text-primary">89%</div>
-    <div className="text-xs text-muted-foreground space-y-1">
-      <div>• 94% offer acceptance</div>
-      <div>• 91% first day show</div>
+  <div className="space-y-3">
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-primary"></div>
+        <span className="text-sm font-medium text-card-foreground">Strong project leadership</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-primary"></div>
+        <span className="text-sm font-medium text-card-foreground">Improved delivery speed</span>
+      </div>
+    </div>
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-destructive"></div>
+        <span className="text-sm text-muted-foreground">Limited cross-team experience</span>
+      </div>
     </div>
   </div>
 }
 
-// BAD: Too many points, causes overflow/scroll
+// BAD: Large number as focal point
 content={
   <div className="text-center space-y-2">
     <div className="text-3xl font-bold text-primary">89%</div>
     <div className="text-xs text-muted-foreground space-y-1">
       <div>• 94% offer acceptance</div>
       <div>• 91% first day show</div>
-      <div>• 87% 90-day retention</div>
-      <div>• 12 projects completed</div>
-      <div>• 4.8/5 peer reviews</div>
-      <div>• ...etc</div>
     </div>
   </div>
 }
 ```
 
 **Summary:**
-- All widgets must fit their content with no scrollbars.
-- Be concise and selective with evidence.
-- If in doubt, reduce the number of widgets to allow more space per widget.
+- The main area of each widget should highlight the most important positive and negative findings.
+- The score/metric should only be shown in the bottom section.
+- This makes the dashboard more actionable, readable, and insight-driven.
 
 ---
 

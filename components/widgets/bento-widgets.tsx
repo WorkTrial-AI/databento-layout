@@ -15,7 +15,7 @@ interface BentoWidgetProps {
 
 /**
  * TEAM PERFORMANCE WIDGET
- * Shows percentage improvement in team performance with supporting evidence
+ * Shows significant positive and negative findings about team performance
  * Default: +12% | Candidate-specific: candidate.metrics.teamPerformance
  */
 export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -27,11 +27,22 @@ export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Team Performance"
       content={
-        <div className="text-center space-y-2">
-          <div className="text-3xl font-bold text-primary">{displayValue}</div>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div>• Led 8 major projects</div>
-            <div>• Improved delivery speed</div>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Strong project leadership</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Improved delivery speed</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Limited cross-team experience</span>
+            </div>
           </div>
         </div>
       }
@@ -44,7 +55,7 @@ export function TeamPerformanceWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * ACTIVE CANDIDATES WIDGET
- * Shows number of active candidates with pipeline breakdown
+ * Shows significant findings about candidate pipeline health
  * Default: 247 | Candidate-specific: candidate.metrics.activeCandidates
  */
 export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -56,16 +67,21 @@ export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) 
     <BentoCard 
       header="Active Candidates"
       content={
-        <div className="space-y-2">
-          <div className="text-3xl font-bold text-primary text-center">{displayValue}</div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>In Review</span>
-              <span className="text-primary">89</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Strong pipeline flow</span>
             </div>
-            <div className="flex justify-between">
-              <span>Final Round</span>
-              <span className="text-primary">28</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">High final round volume</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Interview bottleneck</span>
             </div>
           </div>
         </div>
@@ -79,7 +95,7 @@ export function ActiveCandidatesWidget({ selectedCandidate }: BentoWidgetProps) 
 
 /**
  * INTERVIEW RATE WIDGET
- * Shows percentage of candidates proceeding to interview with breakdown
+ * Shows significant findings about interview process effectiveness
  * Default: 73% | Candidate-specific: candidate.metrics.interviewRate
  */
 export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -91,11 +107,22 @@ export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Interview Rate"
       content={
-        <div className="text-center space-y-2">
-          <div className="text-3xl font-bold text-primary">{displayValue}</div>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div>• 156 reviewed</div>
-            <div>• 114 interviewed</div>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Efficient screening process</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">High conversion rate</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Long scheduling delays</span>
+            </div>
           </div>
         </div>
       }
@@ -108,7 +135,7 @@ export function InterviewRateWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * SUCCESS RATE WIDGET
- * Shows overall success rate with conversion metrics
+ * Shows significant findings about overall success and conversion
  * Default: 89% | Candidate-specific: candidate.metrics.successRate
  */
 export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -120,19 +147,21 @@ export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Success Rate"
       content={
-        <div className="space-y-2">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-1">{displayValue}</div>
-            <div className="text-muted-foreground text-sm">Conversion Rate</div>
-          </div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Offer Acceptance</span>
-              <span className="text-primary">94%</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Excellent offer acceptance</span>
             </div>
-            <div className="flex justify-between">
-              <span>First Day Show</span>
-              <span className="text-primary">91%</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Strong first day show rate</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Retention needs improvement</span>
             </div>
           </div>
         </div>
@@ -146,7 +175,7 @@ export function SuccessRateWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * AI INSIGHTS WIDGET
- * Shows AI system performance with detailed metrics
+ * Shows significant findings about AI system performance
  * Default: Ready | Candidate-specific: candidate.metrics.aiInsights
  */
 export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -158,21 +187,15 @@ export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="AI Insights"
       content={
-        <div className="space-y-2">
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent mx-auto mb-2 flex items-center justify-center">
-              <span className="font-bold text-primary-foreground">AI</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">High matching accuracy</span>
             </div>
-            <div className="text-sm font-medium text-primary">{displayValue}</div>
-          </div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Match Accuracy</span>
-              <span className="text-primary">96%</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Skills Analysis</span>
-              <span className="text-primary">Active</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Bias detection active</span>
             </div>
           </div>
         </div>
@@ -186,7 +209,7 @@ export function AIInsightsWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * RECRUITMENT GOAL WIDGET
- * Shows hires achieved with progress breakdown
+ * Shows significant findings about recruitment progress
  * Default: 15 | Candidate-specific: candidate.metrics.recruitmentGoal
  */
 export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -198,19 +221,21 @@ export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Recruitment Goal"
       content={
-        <div className="space-y-2">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-1">{displayValue}</div>
-            <div className="text-muted-foreground text-sm">Hires this month</div>
-          </div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Target</span>
-              <span className="text-primary">20</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">On track for monthly target</span>
             </div>
-            <div className="flex justify-between">
-              <span>Progress</span>
-              <span className="text-primary">75%</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Quality hires maintained</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Pace needs acceleration</span>
             </div>
           </div>
         </div>
@@ -224,7 +249,7 @@ export function RecruitmentGoalWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * PIPELINE HEALTH WIDGET
- * Shows pipeline status with key health indicators
+ * Shows significant findings about recruitment pipeline status
  * Default: Excellent | Candidate-specific: candidate.metrics.pipelineHealth
  */
 export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -236,11 +261,22 @@ export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Pipeline Health"
       content={
-        <div className="text-center space-y-2">
-          <div className="text-2xl font-bold text-primary">{displayValue}</div>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div>• Steady candidate flow</div>
-            <div>• Strong conversion rates</div>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Consistent candidate flow</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Strong conversion rates</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Junior roles understaffed</span>
+            </div>
           </div>
         </div>
       }
@@ -253,7 +289,7 @@ export function PipelineHealthWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * RESPONSE TIME WIDGET
- * Shows average response time with breakdown by stage
+ * Shows significant findings about response and communication timing
  * Default: 2.3h | Candidate-specific: candidate.metrics.responseTime
  */
 export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -265,16 +301,21 @@ export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Response Time"
       content={
-        <div className="space-y-2">
-          <div className="text-2xl font-bold text-primary text-center">{displayValue}</div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Initial Review</span>
-              <span className="text-primary">1.2h</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Fast initial review</span>
             </div>
-            <div className="flex justify-between">
-              <span>Feedback Delivery</span>
-              <span className="text-primary">4.5h</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Above industry standard</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Slow feedback delivery</span>
             </div>
           </div>
         </div>
@@ -288,7 +329,7 @@ export function ResponseTimeWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * QUALITY SCORE WIDGET
- * Shows overall quality rating with assessment breakdown
+ * Shows significant findings about overall quality assessment
  * Default: 9.1 | Candidate-specific: candidate.metrics.qualityScore
  */
 export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -300,16 +341,21 @@ export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Quality Score"
       content={
-        <div className="space-y-2">
-          <div className="text-2xl font-bold text-primary text-center">{displayValue}</div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Skills Match</span>
-              <span className="text-primary">9.5</span>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Excellent skills match</span>
             </div>
-            <div className="flex justify-between">
-              <span>Culture Fit</span>
-              <span className="text-primary">8.9</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Strong cultural alignment</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Limited leadership experience</span>
             </div>
           </div>
         </div>
@@ -323,7 +369,7 @@ export function QualityScoreWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * TEAM EFFICIENCY WIDGET
- * Shows team efficiency with productivity metrics
+ * Shows significant findings about team productivity and effectiveness
  * Default: 94% | Candidate-specific: candidate.metrics.teamEfficiency
  */
 export function TeamEfficiencyWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -335,11 +381,22 @@ export function TeamEfficiencyWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="Team Efficiency"
       content={
-        <div className="text-center space-y-2">
-          <div className="text-2xl font-bold text-primary">{displayValue}</div>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div>• Streamlined processes</div>
-            <div>• Effective communication</div>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Streamlined processes</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Clear communication</span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Knowledge silos present</span>
+            </div>
           </div>
         </div>
       }
@@ -365,13 +422,16 @@ export function NewMetricWidget({ selectedCandidate }: BentoWidgetProps) {
     <BentoCard 
       header="New Metric"
       content={
-        <div className="text-center space-y-2">
-          <div className="text-xl font-bold text-primary">{displayValue}</div>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div>• Easy to extend</div>
-            <div>• Flexible framework</div>
-            <div>• Rich evidence support</div>
-            <div>• AI-friendly design</div>
+        <div className="space-y-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Easy to extend</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">AI-friendly design</span>
+            </div>
           </div>
         </div>
       }
@@ -384,7 +444,7 @@ export function NewMetricWidget({ selectedCandidate }: BentoWidgetProps) {
 
 /**
  * SATISFACTION WIDGET
- * Shows satisfaction rating with feedback breakdown
+ * Shows significant findings about satisfaction and feedback
  * Uses same pattern as other widgets for consistency
  */
 export function SatisfactionWidget({ selectedCandidate }: BentoWidgetProps) {
@@ -398,22 +458,20 @@ export function SatisfactionWidget({ selectedCandidate }: BentoWidgetProps) {
       header="Satisfaction"
       content={
         <div className="space-y-3">
-          <div className="text-xl font-bold text-primary text-center">{displayValue}</div>
-          <div className="space-y-1 text-xs text-muted-foreground">
-            <div className="flex justify-between">
-              <span>Process Rating</span>
-              <span className="text-primary">9.9</span>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Outstanding feedback</span>
             </div>
-            <div className="flex justify-between">
-              <span>Communication</span>
-              <span className="text-primary">9.8</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-sm font-medium text-card-foreground">Clear communication</span>
             </div>
-            <div className="flex justify-between">
-              <span>Timeline</span>
-              <span className="text-primary">9.7</span>
-            </div>
-            <div className="text-center mt-2 text-muted-foreground">
-              Outstanding feedback
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-destructive"></div>
+              <span className="text-sm text-muted-foreground">Timeline concerns raised</span>
             </div>
           </div>
         </div>
