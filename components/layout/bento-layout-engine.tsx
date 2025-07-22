@@ -119,12 +119,10 @@ export function BentoLayoutEngine({
     <div className={cn("h-screen p-4", className)}>
       <div className="w-full h-full flex flex-col gap-4 min-h-0">
         
-        {/* TOP SECTION - Widgets above center, properly constrained */}
-        {topComponents.length > 0 && (
-          <div className="flex-1 flex flex-col gap-4 min-h-0">
-            {topRows.map((row, index) => renderBentoRow(row, `top-row-${index}`))}
-          </div>
-        )}
+        {/* TOP SECTION - Always exists to center the middle section */}
+        <div className="flex-1 flex flex-col gap-4 min-h-0">
+          {topRows.map((row, index) => renderBentoRow(row, `top-row-${index}`))}
+        </div>
 
         {/* CENTER SECTION - Fixed candidates table with smart widget placement */}
         <div className="flex gap-4 flex-shrink-0" style={{ height: centerHeight }}>
@@ -166,12 +164,10 @@ export function BentoLayoutEngine({
           </div>
         </div>
 
-        {/* BOTTOM SECTION - Widgets below center, properly constrained within remaining space */}
-        {bottomComponents.length > 0 && (
-          <div className="flex-1 flex flex-col gap-4 min-h-0">
-            {bottomRows.map((row, index) => renderBentoRow(row, `bottom-row-${index}`))}
-          </div>
-        )}
+        {/* BOTTOM SECTION - Always exists to center the middle section */}
+        <div className="flex-1 flex flex-col gap-4 min-h-0">
+          {bottomRows.map((row, index) => renderBentoRow(row, `bottom-row-${index}`))}
+        </div>
 
       </div>
     </div>

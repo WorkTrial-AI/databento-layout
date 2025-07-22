@@ -5,25 +5,11 @@ import { Badge } from "@/components/ui/badge";
 
 interface JobRequirementsProps {
   className?: string;
+  requirements: string[];
+  techSkills: string[];
 }
 
-const requirements = [
-  "5+ years of React development experience",
-  "Strong TypeScript skills",
-  "Experience with Next.js framework",
-  "Knowledge of modern CSS (Tailwind preferred)",
-  "Familiarity with Git version control",
-  "Understanding of RESTful APIs",
-  "Experience with testing frameworks",
-  "Strong problem-solving abilities"
-];
-
-const techSkills = [
-  "React", "TypeScript", "Next.js", "Tailwind CSS", "Node.js", 
-  "Git", "Jest", "REST APIs", "GraphQL", "PostgreSQL"
-];
-
-export function JobRequirements({ className }: JobRequirementsProps) {
+export function JobRequirements({ className, requirements, techSkills }: JobRequirementsProps) {
   return (
     <div className={cn("w-full h-full", className)}>
       <div className="rounded-md border bg-card shadow-lg w-full h-full flex flex-col overflow-hidden">
@@ -36,6 +22,9 @@ export function JobRequirements({ className }: JobRequirementsProps) {
           <div>
             <h3 className="text-xs font-medium text-card-foreground mb-2">Requirements</h3>
             <ul className="space-y-1">
+              {requirements.length === 0 && (
+                <li className="text-xs text-muted-foreground italic">No requirements specified.</li>
+              )}
               {requirements.map((requirement, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 text-xs">•</span>
@@ -51,6 +40,9 @@ export function JobRequirements({ className }: JobRequirementsProps) {
           <div>
             <h3 className="text-xs font-medium text-card-foreground mb-2">Tech Skills Needed</h3>
             <div className="flex flex-wrap gap-1">
+              {techSkills.length === 0 && (
+                <span className="text-xs text-muted-foreground italic">No tech skills specified.</span>
+              )}
               {techSkills.map((skill, index) => (
                 <Badge
                   key={index}
