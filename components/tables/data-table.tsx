@@ -83,12 +83,14 @@ export function DataTable({ className, selectedCandidateId, onCandidateSelect, c
   };
 
   const getRankColor = (rank: number): string => {
+    if (rank === -1) return "text-muted-foreground";
     if (rank <= 2) return "text-primary";
     if (rank <= 4) return "text-primary";
     return "text-destructive";
   };
 
   const getRankBgColor = (rank: number): string => {
+    if (rank === -1) return "bg-muted/50";
     if (rank <= 2) return "bg-primary/20";
     if (rank <= 4) return "bg-accent";
     return "bg-destructive/20";
@@ -154,7 +156,7 @@ export function DataTable({ className, selectedCandidateId, onCandidateSelect, c
                           getRankBgColor(candidate.jobRelevanceRank)
                         )}
                       >
-                        {candidate.jobRelevanceRank}
+                        {candidate.jobRelevanceRank === -1 ? "Unranked" : candidate.jobRelevanceRank}
                       </span>
                     </TableCell>
                     <TableCell className="py-2 px-3">

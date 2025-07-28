@@ -8,30 +8,6 @@
 - Show 1-2 positive findings and 1 negative finding maximum
 - Main content area shows findings, score goes in footer section
 
-### Good Example:
-```tsx
-content={
-  <div className="space-y-3">
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-primary"></div>
-        <span className="text-sm font-medium text-card-foreground">Strong project leadership</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-primary"></div>
-        <span className="text-sm font-medium text-card-foreground">Improved delivery speed</span>
-      </div>
-    </div>
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-destructive"></div>
-        <span className="text-sm text-muted-foreground">Limited cross-team experience</span>
-      </div>
-    </div>
-  </div>
-}
-```
-
 ## System Requirements
 
 1. **Candidates table always stays centered** (bulletproof 2:3:2 flex ratio)
@@ -54,26 +30,6 @@ content={
 ## Critical Requirement: Supporting Evidence
 
 **All widgets MUST include supporting evidence/justification, not just raw numbers.**
-
-### Bad Example:
-```tsx
-content={<div className="text-2xl font-bold text-primary">85%</div>}
-```
-
-### Good Example:
-```tsx
-content={
-  <div className="text-center space-y-2">
-    <div className="text-3xl font-bold text-primary">85%</div>
-    <div className="text-xs text-muted-foreground space-y-1">
-      <div>• 12 successful projects completed</div>
-      <div>• React & TypeScript expertise</div>
-      <div>• Strong GitHub activity</div>
-      <div>• 4.8/5 peer reviews</div>
-    </div>
-  </div>
-}
-```
 
 ## Adding New Widgets
 
@@ -181,6 +137,70 @@ components/
 **Technical Skills**: Technologies used, project complexity, experience years, certifications
 **Collaboration**: Team feedback, communication frequency, mentoring activities
 **Leadership**: Team size led, project ownership, initiative examples, decision-making
+
+## Candidate Ranking System
+
+### How Rankings Work
+
+The `jobRelevanceRank` displayed in the candidates table is calculated as the **average of all category rankings** for each candidate.
+
+**Example Calculation:**
+- Candidate A ranks #1 in "Technical Skills Match"
+- Candidate A ranks #3 in "GitHub Commits"
+- Candidate A ranks #2 in "Code Quality"
+- **Final Rank**: (1 + 3 + 2) ÷ 3 = **2.0** (rounded to nearest integer)
+
+### Special Cases
+- **Unranked Candidates**: If a candidate has `jobRelevanceRank: -1`, the table displays "Unranked" instead of a number
+- **Tied Scores**: Candidates with identical averages may share the same rank
+
+### Data Management Requirements
+
+#### scores.txt File
+**CRITICAL**: Maintain a `scores.txt` file that tracks individual category scores for each candidate.
+
+**Format Example:**
+```
+CANDIDATE_ID | TECHNICAL_MATCH | GITHUB_COMMITS | CODE_QUALITY | TEAM_COLLABORATION | LEADERSHIP_POTENTIAL
+candidate-1  | 1               | 3              | 2            | 1                  | 4
+candidate-2  | 2               | 1              | 1            | 3                  | 2
+candidate-3  | 3               | 2              | 3            | 2                  | 1
+```
+
+#### When Adding New Components
+
+**ALWAYS update both files when adding new ranking categories:**
+
+1. **config.json** - Update the actual candidate ranking
+2. **scores.txt** - Add the new ranking column for ALL candidates
+
+**Example Workflow:**
+```bash
+# 1. Add new widget component
+# 2. Update config.json with new widget
+# 3. Update scores.txt with new ranking column
+# 4. Recalculate jobRelevanceRank averages
+# 5. Update candidate data with new averages
+```
+
+### Ranking Categories
+
+Track separate rankings for each evaluation dimension:
+- **Technical Skills Match** - How well skills align with job requirements
+- **GitHub Activity** - Commit frequency, repository quality, open source contributions
+- **Code Quality** - Code review scores, test coverage, architecture patterns
+- **Team Collaboration** - Communication skills, teamwork feedback, mentoring
+- **Leadership Potential** - Project ownership, decision-making, team influence
+- **Experience Relevance** - Years in relevant technologies, industry experience
+- **Cultural Fit** - Values alignment, work style compatibility
+
+### Implementation Notes
+
+- Rankings should be **1-based** (1 = best, higher numbers = lower ranking)
+- Calculate averages using **all available category scores**
+- Round final averages to **nearest integer** for display
+- Store raw averages for tie-breaking if needed
+- Update rankings whenever new evaluation data is available
 
 ## State Management
 
