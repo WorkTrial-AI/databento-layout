@@ -31,7 +31,7 @@ export function BentoCard({
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 px-3 py-3 flex items-center justify-center overflow-hidden">
+      <div className="flex-1 px-3 py-3 flex items-center justify-center overflow-auto">
         {contentType === "text" ? (
           <div className="text-center">
             {content}
