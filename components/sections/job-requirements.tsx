@@ -22,10 +22,10 @@ export function JobRequirements({ className, requirements, techSkills }: JobRequ
           <div>
             <h3 className="text-xs font-medium text-card-foreground mb-2">Requirements</h3>
             <ul className="space-y-1">
-              {requirements.length === 0 && (
+              {requirements && requirements.length === 0 && (
                 <li className="text-xs text-muted-foreground italic">No requirements specified.</li>
               )}
-              {requirements.map((requirement, index) => (
+              {requirements && requirements.map((requirement, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 text-xs">•</span>
                   <span className="text-muted-foreground text-xs leading-relaxed">
